@@ -1,0 +1,14 @@
+services:
+    tomcat:
+        container_name: tomcat
+        image: tomcat:latest
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./lib:/usr/local/tomcat/webapps/ROOT/WEB-INF/lib
+            - ./bin:/usr/local/tomcat/webapps/ROOT/WEB-INF/classes
+            - ./src/view:/usr/local/tomcat/webapps/ROOT/WEB-INF/pages
+            - ./web.xml:/usr/local/tomcat/webapps/ROOT/WEB-INF/web.xml
+        environment:
+            CATALINA_OPTS: "-Djava.awt.headless=true -Xms512m -Xmx1024m"
+        restart: always

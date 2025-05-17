@@ -1,15 +1,16 @@
-package servlet;
+package controller.app;
 
 import java.io.IOException;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/hello")
-public class HelloServlet extends HttpServlet {
+@WebServlet("")
+public class IndexController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
@@ -17,6 +18,8 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         resp.setStatus(200);
-        resp.getWriter().println("Hello!");
+
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/pages/index.html");
+        rd.include(req, resp);
     }
 }

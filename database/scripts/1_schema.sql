@@ -1,0 +1,28 @@
+CREATE TABLE user (
+    id INT NOT NULL AUTO_INCREMENT,
+    username VARCHAR(30) NOT NULL UNIQUE,
+    fullname VARCHAR(200) NOT NULL,
+    email VARCHAR(200) NOT NULL,
+    password VARCHAR(100) NOT NULL,
+    timestamp_register TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE post (
+    id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    content TEXT NOT NULL,
+    timestamp_post TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    timestamp_last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);
+
+CREATE TABLE `user_likes_post` (
+    user_id INT NOT NULL,
+    post_id INT NOT NULL,
+    timestamp_like TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
+    PRIMARY KEY (user_id, post_id),
+    FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE
+);

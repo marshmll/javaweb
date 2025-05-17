@@ -13,19 +13,27 @@
 
  	<servlet> 
         <servlet-name>Index</servlet-name> 
-        <servlet-class>servlet.IndexServlet</servlet-class> 
+        <servlet-class>controller.app.IndexController</servlet-class> 
   	</servlet>
   	<servlet> 
-        <servlet-name>Hello</servlet-name> 
-        <servlet-class>servlet.HelloServlet</servlet-class> 
+        <servlet-name>ApiUserAll</servlet-name> 
+        <servlet-class>controller.api.user.AllController</servlet-class> 
   	</servlet>  
+  	<servlet> 
+        <servlet-name>ApiUserByUsername</servlet-name> 
+        <servlet-class>controller.api.user.ByUsernameController</servlet-class> 
+  	</servlet>
      
      <servlet-mapping> 
      	<servlet-name>Index</servlet-name> 
     	<url-pattern></url-pattern> 
     </servlet-mapping>
    	<servlet-mapping> 
-     	<servlet-name>Hello</servlet-name> 
-    	<url-pattern>/hello</url-pattern> 
+     	<servlet-name>ApiUserAll</servlet-name> 
+    	<url-pattern>/api/user/all</url-pattern> 
+    </servlet-mapping>
+    <servlet-mapping> 
+     	<servlet-name>ApiUserByUsername</servlet-name> 
+    	<url-pattern>/api/user/by_username</url-pattern> 
     </servlet-mapping>
 </web-app>
